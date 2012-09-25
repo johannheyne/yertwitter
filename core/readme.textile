@@ -56,14 +56,8 @@ mytwitter.timeline({
 *twitter_link_text*
 <em>(string)</em> Define the text of the twitterlink.
 
-*twitter_link_class*
-<em>(string)</em> Define a class for the twitter_link element.
-
 *created_at_type*
 <em>(string) relative, date</em> Define the type of displaying the created at date.
-
-*created_at_class*
-<em>(string)</em> Define a class for the created_at element.
 
 *show_in_order*
 <em>(array)</em> Define, what content of a tweet should displayed and in what order.

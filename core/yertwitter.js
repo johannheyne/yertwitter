@@ -25,8 +25,8 @@ var yerTwitter = {
             wrap.appendChild(anch);
             return wrap.innerHTML;
         });
-        tweet = tweet.replace(/(^|\s)@(\w+)/g, '$1@<a href="http://www.twitter.com/$2" target="_blank">$2</a>');
-        return tweet.replace(/(^|\s)#(\w+)/g, '$1#<a href="http://search.twitter.com/search?q=%23$2" target="_blank">$2</a>');
+        tweet = tweet.replace(/(^|\s)@(\w+)/g, '$1<a href="http://www.twitter.com/$2" target="_blank">@$2</a>');
+        return tweet.replace(/(^|\s)#(\w+)/g, '$1<a href="http://search.twitter.com/search?q=%23$2" target="_blank">#$2</a>');
     },
 
     parseTwitterDate: function ( p ) {
@@ -147,6 +147,7 @@ var yerTwitter = {
         if ( typeof p.twitter_link === 'undefined' ) { p.twitter_link = 'https://twitter.com'; }
         if ( typeof p.console_log === 'undefined' ) { p.console_log = false; }
         if ( typeof p.created_at_type === 'undefined' ) { p.created_at_type = false; }
+        if ( typeof p.created_at_class === 'undefined' ) { p.created_at_class = false; }
         if ( typeof p.show_in_order === 'undefined' ) { p.show_in_order = {
             text: 1
         }; }
@@ -156,6 +157,7 @@ var yerTwitter = {
         if ( typeof p.show_in_order.created_at === 'undefined' ) { p.show_in_order.created_at = false; }
         if ( typeof p.show_in_order.twitter_link === 'undefined' ) { p.show_in_order.twitter_link = false; }
         if ( typeof p.twitter_link_text === 'undefined' ) { p.twitter_link_text = 'more tweets'; }
+        if ( typeof p.twitter_link_class === 'undefined' ) { p.twitter_link_class = false; }
         
         
         var param = {};
@@ -178,7 +180,7 @@ var yerTwitter = {
                     var adclass = false,
                         results = jQuery( p.selector );
                         
-                    results.append( '<ul class="' + p.root_class + '">' );
+                    results.append( '<ul class="tweets ' + p.root_class + '">' );
                     results = results.find('ul');
                     
                     for ( var i in data ) {
@@ -201,12 +203,11 @@ var yerTwitter = {
                             
                             // tweet
                             
-                            if ( p.show_in_order.profile_image !== false ) { sort[ p.show_in_order.profile_image ] = '<img src="' + data[i].user.profile_image_url + '" alt=""/>'; }
-                            if ( p.show_in_order.screen_name !== false ) { sort[ p.show_in_order.screen_name ] = '<cite>' + data[i].user.screen_name + '</cite>'; }
-                            if ( p.show_in_order.text !== false ) { sort[ p.show_in_order.text ] = '<p>' + yerTwitter.linkify( data[i].text ) + '</p>'; }
-                            if ( p.show_in_order.created_at !== false ) {
-                                sort[ p.show_in_order.created_at ] = '<p>' + yerTwitter.parseTwitterDate({ created_at: data[i].created_at, lang: p.lang, type: p.created_at_type }) + '</p>'; }
-                            if ( p.show_in_order.twitter_link !== false ) { sort[ p.show_in_order.twitter_link ] = '<a href="https://twitter.com/' + data[i].user.screen_name + '">' + p.twitter_link_text + '</a>'; }
+                            if ( p.show_in_order.profile_image !== false ) { sort[ p.show_in_order.profile_image ] = '<img class="tweet_profile_image" src="' + data[i].user.profile_image_url + '" alt=""/>'; }
+                            if ( p.show_in_order.screen_name !== false ) { sort[ p.show_in_order.screen_name ] = '<cite class="tweet_screen_name">' + data[i].user.screen_name + '</cite>'; }
+                            if ( p.show_in_order.text !== false ) { sort[ p.show_in_order.text ] = '<p class="tweet_text">' + yerTwitter.linkify( data[i].text ) + '</p>'; }
+                            if ( p.show_in_order.created_at !== false ) { sort[ p.show_in_order.created_at ] = '<p class="' + p.created_at_class + ' tweet_created_at">' + yerTwitter.parseTwitterDate({ created_at: data[i].created_at, lang: p.lang, type: p.created_at_type }) + '</p>'; }
+                            if ( p.show_in_order.twitter_link !== false ) { sort[ p.show_in_order.twitter_link ] = '<a class="' + p.twitter_link_class + ' tweet_twitter_link" href="https://twitter.com/' + data[i].user.screen_name + '">' + p.twitter_link_text + '</a>'; }
                             if ( data[i].favorited ) { adclass = ' favorite'; }
                             
                         }
