@@ -177,7 +177,7 @@ var yerTwitter = {
                 
                 if ( p.selector ) {
                     
-                    var adclass = false,
+                    var adclass = '',
                         results = jQuery( p.selector );
                         
                     results.append( '<ul class="tweets ' + p.root_class + '">' );
@@ -212,7 +212,7 @@ var yerTwitter = {
                             
                         }
                         
-                        var tmp = '<li data-id="' + data[i].id_str + '" class="' + p.tweet_class + adclass + '">';
+                        var tmp = '<li data-id="' + data[i].id_str + '" class="' + p.tweet_class + ' ' + adclass + '">';
                             for ( var i2 in sort ) {
                                 tmp += sort[ i2 ];
                             }
