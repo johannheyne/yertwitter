@@ -76,12 +76,22 @@ var yerTwitter = {
                 ampm = hour < 12 ? ' AM' : ' PM';
             
                 var ret = '';
-            
-                if ( p.show_time ) { ret += date.getHours() + ':' + date.getMinutes(); }
-                if ( p.show_time && p.lang === 'en' ) { ret += ' ' + ampm; }
-                if ( p.show_date ) { ret += ' ' + date.getDate() + '.'; }
-                if ( p.show_date ) { ret += ' ' + month[ p.lang ][ date.getMonth() ]; }
-                if ( p.show_date ) { ret += ' ' + date.getFullYear(); }
+                
+                if ( p.lang === 'de' ) {
+                    if ( p.show_time ) { ret += date.getHours() + ':' + date.getMinutes(); }
+                    if ( p.show_time && p.lang === 'en' ) { ret += ' ' + ampm; }
+                    if ( p.show_date ) { ret += ' ' + date.getDate() + '.'; }
+                    if ( p.show_date ) { ret += ' ' + month[ p.lang ][ date.getMonth() ]; }
+                    if ( p.show_date ) { ret += ' ' + date.getFullYear(); }
+                }
+                
+                if ( p.lang === 'en' ) {
+                    if ( p.show_time ) { ret += date.getHours() + ':' + date.getMinutes(); }
+                    if ( p.show_time ) { ret += ' ' + ampm; }
+                    if ( p.show_date ) { ret += ' ' + month[ p.lang ][ date.getMonth() ]; }
+                    if ( p.show_date ) { ret += ' ' + date.getDate() + 'th'; }
+                    if ( p.show_date ) { ret += ', ' + date.getFullYear(); }
+                }
             
             return ret;
         }
