@@ -213,11 +213,11 @@ var yerTwitter = {
                             
                             // tweet
                             
-                            if ( p.show_in_order.profile_image !== false ) { sort[ p.show_in_order.profile_image ] = '<img class="tweet_profile_image" src="' + data[i].user.profile_image_url + '" alt=""/>'; }
-                            if ( p.show_in_order.screen_name !== false ) { sort[ p.show_in_order.screen_name ] = '<cite class="tweet_screen_name">' + data[i].user.screen_name + '</cite>'; }
-                            if ( p.show_in_order.text !== false ) { sort[ p.show_in_order.text ] = '<p class="tweet_text">' + yerTwitter.linkify( data[i].text ) + '</p>'; }
-                            if ( p.show_in_order.created_at !== false ) { sort[ p.show_in_order.created_at ] = '<p class="' + p.created_at_class + ' tweet_created_at">' + yerTwitter.parseTwitterDate({ created_at: data[i].created_at, lang: p.lang, type: p.created_at_type }) + '</p>'; }
-                            if ( p.show_in_order.twitter_link !== false ) { sort[ p.show_in_order.twitter_link ] = '<a class="' + p.twitter_link_class + ' tweet_twitter_link" href="https://twitter.com/' + data[i].user.screen_name + '">' + p.twitter_link_text + '</a>'; }
+                            if ( p.show_in_order.profile_image !== false ) { sort[ p.show_in_order.profile_image ] = '<img class="tweet_profile_image" src="' + data[i].user.profile_image_url + '" alt=""/> '; }
+                            if ( p.show_in_order.screen_name !== false ) { sort[ p.show_in_order.screen_name ] = '<cite class="tweet_screen_name">' + data[i].user.screen_name + '</cite> '; }
+                            if ( p.show_in_order.text !== false ) { sort[ p.show_in_order.text ] = '<p class="tweet_text">' + yerTwitter.linkify( data[i].text ) + '</p> '; }
+                            if ( p.show_in_order.created_at !== false ) { sort[ p.show_in_order.created_at ] = '<p class="' + p.created_at_class + ' tweet_created_at">' + yerTwitter.parseTwitterDate({ created_at: data[i].created_at, lang: p.lang, type: p.created_at_type }) + '</p> '; }
+                            if ( p.show_in_order.twitter_link !== false ) { sort[ p.show_in_order.twitter_link ] = '<a class="' + p.twitter_link_class + ' tweet_twitter_link" href="https://twitter.com/' + data[i].user.screen_name + '">' + p.twitter_link_text + '</a> '; }
                             if ( data[i].favorited ) { adclass = ' favorite'; }
                             
                         }
