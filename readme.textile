@@ -8,9 +8,7 @@ Just ask me for your needs at mail@johannheyne.de or create a new issue.
 h2. Setup
 
 inlude the yertwitter.php
-<pre><code>/* __autoload: http://php.net/manual/de/language.oop5.autoload.php */
-
-function __autoload( $class_name ) {
+<pre><code>function __autoload( $class_name ) {
 
     if ( $class_name == 'YerTwitter' ) {
 
