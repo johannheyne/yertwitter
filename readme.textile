@@ -7,11 +7,20 @@ Just ask me for your needs at mail@johannheyne.de or create a new issue.
 
 h2. Setup
 
-load the yertwitter.php
+inlude the yertwitter.php
+<pre><code>/* __autoload: http://php.net/manual/de/language.oop5.autoload.php */
 
-Copy the yerTwitter object to an individuel variable an configurate the basics for the timeline.
+function __autoload( $class_name ) {
+
+    if ( $class_name == 'YerTwitter' ) {
+        
+        require_once('wp-content/themes/mytheme/assets/yertwitter/core/yertwitter.php');
+    }
+}
+</code></pre>
+
 <pre><code>$param = array(
-    'twitteroauth_path' => 'twitteroauth/twitteroauth.php',
+    'twitteroauth_path' => '../twitteroauth/twitteroauth.php',
     'consumer_key' => $your_twitter_consumer_key,
     'consumer_secret' => $your_twitter_consumer_secret,
     'access_token' => $your_twitter_access_token,
