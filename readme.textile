@@ -13,7 +13,7 @@ inlude the yertwitter.php
 function __autoload( $class_name ) {
 
     if ( $class_name == 'YerTwitter' ) {
-        
+
         require_once('wp-content/themes/mytheme/assets/yertwitter/core/yertwitter.php');
     }
 }
