@@ -12,62 +12,62 @@ inlude the yertwitter.php
 
 function __autoload( $class_name ) {
 
-    if ( $class_name == 'YerTwitter' ) {
+	if ( $class_name == 'YerTwitter' ) {
 
-        require_once('wp-content/themes/mytheme/assets/yertwitter/core/yertwitter.php');
-    }
+		require_once('wp-content/themes/mytheme/assets/yertwitter/core/yertwitter.php');
+	}
 }
 </code></pre>
 
 <pre><code>$param = array(
-    'twitteroauth_path' => '../twitteroauth/twitteroauth.php',
-    'consumer_key' => $your_twitter_consumer_key,
-    'consumer_secret' => $your_twitter_consumer_secret,
-    'access_token' => $your_twitter_access_token,
-    'access_token_secret' => $your_twitter_access_token_secret,
-    'wordpress_transient_name' => 'a_unique_string',
-    'screen_name' => $your_twitter_screen_name,
-    'tweets_count' => 10,
-    'exclude_replies' => false,
-    'include_rts' => true,
-    'links_as_hyperlinks' => true,
-    'hashtags_as_hyperlinks' => true,
-    'twitterusers_as_hyperlinks' => true,
-    'html_list' => '<ul class="twitterlist">{{content}}</ul>',
-    'html_list_item' => '<li class="twitterlist_item">{{content}}</li>',
-    'html_content' => '{{time}} {{message}} {{link}}',
-    'html_time' => '<span class="twitterlist_date"><abbr title="{{time_stamp}}">{{time}}</abbr></span>',
-    'html_link' => '<a href="{{url}}" target="_blank">{{text}}</a>',
-    'locale_code' => 'en-US',
-    'link_text' => array(
-        'en-US' => 'more tweets',
-        'de-DE' => 'mehr Tweets',
-    ),
-    'time_format' => array(
-        'en-US' => '%m/%d/%Y',
-        'de-DE' => '%d.%m.%Y',
-    ),
-    'time_human_range' => 604800, // false or second ( 60 * 60 * 24 * 7 )
-    'time_human_text' => array(
-        'en-US' => array(
-            'x seconds ago' => 'some seconds ago',
-            '1 minute ago' => 'about 1 minute ago',
-            'x minutes ago' => '{{x}} minutes ago',
-            '1 hour ago' => 'about 1 hour ago',
-            'x hours ago' => 'about {{x}} hours ago',
-            'yesterday' => 'yesterday',
-            'x days ago' => '{{x}} days ago',
-        ),
-        'de-DE' => array(
-            'x seconds ago' => 'vor wenigen Sekunden',
-            '1 minute ago' => 'vor einer Minute',
-            'x minutes ago' => 'vor {{x}} Minuten',
-            '1 hour ago' => 'vor einer Stunde',
-            'x hours ago' => 'vor {{x}} Stunden',
-            'yesterday' => 'yesterday',
-            'x days ago' => 'vor {{x}} Tagen',
-        )
-    ),
+	'twitteroauth_path' => '../twitteroauth/twitteroauth.php',
+	'consumer_key' => $your_twitter_consumer_key,
+	'consumer_secret' => $your_twitter_consumer_secret,
+	'access_token' => $your_twitter_access_token,
+	'access_token_secret' => $your_twitter_access_token_secret,
+	'wordpress_transient_name' => 'a_unique_string',
+	'screen_name' => $your_twitter_screen_name,
+	'tweets_count' => 10,
+	'exclude_replies' => false,
+	'include_rts' => true,
+	'links_as_hyperlinks' => true,
+	'hashtags_as_hyperlinks' => true,
+	'twitterusers_as_hyperlinks' => true,
+	'html_list' => '<ul class="twitterlist">{{content}}</ul>',
+	'html_list_item' => '<li class="twitterlist_item">{{content}}</li>',
+	'html_content' => '{{time}} {{message}} {{link}}',
+	'html_time' => '<span class="twitterlist_date"><abbr title="{{time_stamp}}">{{time}}</abbr></span>',
+	'html_link' => '<a href="{{url}}" target="_blank">{{text}}</a>',
+	'locale_code' => 'en-US',
+	'link_text' => array(
+		'en-US' => 'more tweets',
+		'de-DE' => 'mehr Tweets',
+	),
+	'time_format' => array(
+		'en-US' => '%m/%d/%Y',
+		'de-DE' => '%d.%m.%Y',
+	),
+	'time_human_range' => 604800, // false or second ( 60 * 60 * 24 * 7 )
+	'time_human_text' => array(
+		'en-US' => array(
+			'x seconds ago' => 'some seconds ago',
+			'1 minute ago' => 'about 1 minute ago',
+			'x minutes ago' => '{{x}} minutes ago',
+			'1 hour ago' => 'about 1 hour ago',
+			'x hours ago' => 'about {{x}} hours ago',
+			'yesterday' => 'yesterday',
+			'x days ago' => '{{x}} days ago',
+		),
+		'de-DE' => array(
+			'x seconds ago' => 'vor wenigen Sekunden',
+			'1 minute ago' => 'vor einer Minute',
+			'x minutes ago' => 'vor {{x}} Minuten',
+			'1 hour ago' => 'vor einer Stunde',
+			'x hours ago' => 'vor {{x}} Stunden',
+			'yesterday' => 'yesterday',
+			'x days ago' => 'vor {{x}} Tagen',
+		)
+	),
 );
 $twitter = new YerTwitter( $param );
 $twitter->echoTweets();
