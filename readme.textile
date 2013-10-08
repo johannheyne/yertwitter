@@ -1,78 +1,67 @@
-h1. yertwitter
+h1. YerTwitter
 
-A javascript object for displaying and customizing twitter timelines.
+A PHP object for displaying and customizing twitter timelines in WordPress.
 Corrupting changes still may ahead!
-
-h2. Roadmap
-
-* link for reply
-* link for favorits
-* link for retweets
-
-* [done] enable order of tweet contents
-* [done] displaying a timeline
 
 Just ask me for your needs at mail@johannheyne.de or create a new issue.
 
 h2. Setup
 
-load the yertwitter.js
-Place a container with an id in your html-template, where the timeline should be inserted.
-<pre><code><div id="my-twitter-timeline"></div>
-</code></pre>
+load the yertwitter.php
 
 Copy the yerTwitter object to an individuel variable an configurate the basics for the timeline.
-<pre><code>var mytwitter = yerTwitter;
-mytwitter.timeline({
-    selector: '#my-twitter-timeline',
-    screen_name: 'johannheyne',
-    count: 6,
-    show_in_order: {
-        text: 0,
-        created_at: 1,
-    }
-});
+<pre><code>$param = array(
+    'twitteroauth_path' => 'twitteroauth/twitteroauth.php',
+    'consumer_key' => $your_twitter_consumer_key,
+    'consumer_secret' => $your_twitter_consumer_secret,
+    'access_token' => $your_twitter_access_token,
+    'access_token_secret' => $your_twitter_access_token_secret,
+    'wordpress_transient_name' => 'a_unique_string',
+    'screen_name' => $your_twitter_screen_name,
+    'tweets_count' => 10,
+    'exclude_replies' => false,
+    'include_rts' => true,
+    'links_as_hyperlinks' => true,
+    'hashtags_as_hyperlinks' => true,
+    'twitterusers_as_hyperlinks' => true,
+    'html_list' => '<ul class="twitterlist">{{content}}</ul>',
+    'html_list_item' => '<li class="twitterlist_item">{{content}}</li>',
+    'html_content' => '{{time}} {{message}} {{link}}',
+    'html_time' => '<span class="twitterlist_date"><abbr title="{{time_stamp}}">{{time}}</abbr></span>',
+    'html_link' => '<a href="{{url}}" target="_blank">{{text}}</a>',
+    'locale_code' => 'en-US',
+    'link_text' => array(
+        'en-US' => 'more tweets',
+        'de-DE' => 'mehr Tweets',
+    ),
+    'time_format' => array(
+        'en-US' => '%m/%d/%Y',
+        'de-DE' => '%d.%m.%Y',
+    ),
+    'time_human_range' => 604800, // false or second ( 60 * 60 * 24 * 7 )
+    'time_human_text' => array(
+        'en-US' => array(
+            'x seconds ago' => 'some seconds ago',
+            '1 minute ago' => 'about 1 minute ago',
+            'x minutes ago' => '{{x}} minutes ago',
+            '1 hour ago' => 'about 1 hour ago',
+            'x hours ago' => 'about {{x}} hours ago',
+            'yesterday' => 'yesterday',
+            'x days ago' => '{{x}} days ago',
+        ),
+        'de-DE' => array(
+            'x seconds ago' => 'vor wenigen Sekunden',
+            '1 minute ago' => 'vor einer Minute',
+            'x minutes ago' => 'vor {{x}} Minuten',
+            '1 hour ago' => 'vor einer Stunde',
+            'x hours ago' => 'vor {{x}} Stunden',
+            'yesterday' => 'yesterday',
+            'x days ago' => 'vor {{x}} Tagen',
+        )
+    ),
+);
+$twitter = new YerTwitter( $param );
+$twitter->echoTweets();
+or
+$tweets_html = $twitter->getTweets();
 </code></pre>
-
-*selector*
-<em>(string)</em> Define the id of the element, where the timeline shoul be insert.
-
-*screen_name*
-<em>(string)</em> Define the screen_name of a twitter user.
-
-*count*
-<em>(integer)</em> Define the number of tweets to display.
-
-*lang*
-<em>(string) en, de</em> Define the language of some predefined text-snippets like weekdays in the date.
-
-*root_class*
-<em>(string)</em> Define a class for the root element of the tweets list.
-
-*tweet_class*
-<em>(string)</em> Define a class for the tweet listitems.
-
-
-*twitter_link_text*
-<em>(string)</em> Define the text of the twitterlink.
-
-*twitter_link_class*
-<em>(string)</em> Define a class for the twitter_link element.
-
-*created_at_type*
-<em>(string) relative, date</em> Define the type of displaying the created at date.
-
-*created_at_class*
-<em>(string)</em> Define a class for the created_at element.
-
-*show_in_order*
-<em>(array)</em> Define, what content of a tweet should displayed and in what order.
-* text
-* created_at
-* twitter_link
-* profile_image
-* screen_name
-
-*twitter_link_text*
-<em>(string)</em> Defining the text of the twitter-link.
-
